@@ -1,15 +1,13 @@
 package ComputerNetworkLab.src;
 
-
 public class Packet {
-	int sourceId;		
+	int sourceId;
 	int startTime;
 	int endTime;
 	int size;
 	int ptime;
 	int status = 1;
 
-	
 	public Packet(int a) {
 		this.sourceId = a;
 	}
@@ -17,7 +15,6 @@ public class Packet {
 	public int getStatus() {
 		return status;
 	}
-
 
 	public void setStatus(int status) {
 		this.status = status;
@@ -30,7 +27,6 @@ public class Packet {
 	public void setPtime(int ptime) {
 		this.ptime = ptime;
 	}
-
 
 	public int getSourceId() {
 		return sourceId;
@@ -65,4 +61,3 @@ public class Packet {
 	}
 
 }
-

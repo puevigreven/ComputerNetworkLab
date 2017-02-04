@@ -1,10 +1,7 @@
 package ComputerNetworkLab.src;
 
-
 import java.util.LinkedList;
 import java.util.Queue;
-
-
 
 public class Source {
 	int id;
@@ -14,14 +11,14 @@ public class Source {
 	int sumOfdelayOfAllPackets = 0;
 	Queue<Packet> q = new LinkedList<>();
 
-	public Source(int a, int b, int c) {
-		this.id = a;
-		this.packetSendingRate = b;
-		this.packetGenrationRate = c;
+	public Source(int id, int packetSendingRate, int packetGenrationRate) {
+		this.id = id;
+		this.packetSendingRate = packetSendingRate;
+		this.packetGenrationRate = packetGenrationRate;
 	}
 
-	public Source(int a) {
-		this.id = a;
+	public Source(int id) {
+		this.id = id;
 	}
 
 	public int getSumOfdelayOfAllPackets() {
@@ -100,5 +97,3 @@ public class Source {
 	}
 
 }
-
- 
