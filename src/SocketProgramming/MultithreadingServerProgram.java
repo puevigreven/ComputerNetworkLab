@@ -6,9 +6,16 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Plainserver {
-	
+public class MultithreadingServerProgram {
 	static int PortNumber = 9091;
+	int user = 0;
+	String defalutPath = null;
+	
+	MultithreadingServerProgram(int users, String path){
+		this.user = users;
+		this.defalutPath = path;
+	}
+	
 	void run() throws IOException {
 		System.out.println("hello from the server");
 		ServerSocket listener = new ServerSocket(PortNumber);
@@ -55,19 +62,11 @@ public class Plainserver {
 						}
 						String directory = "/Users/puevigreven/Desktop/NetworkLab/ComputerNetworkLab/src/SocketProgramming/";
 						System.out.println("file name is: " + fileName);
-						if(fileName == null){
-							String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + "Hello this is home";
-							socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
-							continue;
-						}
-
-						int found = -1;
-						found = findFile(fileName, new File(directory));
+						int found = findFile(fileName, new File(directory));
 						if (found == 0) {
 							String httpResponse_fileNotFound = "HTTP/1.1 200 OK\r\n\r\n" + "404 File Not found";
 							socket.getOutputStream().write(httpResponse_fileNotFound.getBytes("UTF-8"));
-						} 
-						else if(found == 1) {
+						} else {
 							String path = "/Users/puevigreven/Desktop/NetworkLab/ComputerNetworkLab/src/SocketProgramming/"
 									+ fileName;
 
@@ -76,7 +75,7 @@ public class Plainserver {
 							String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + content;
 							socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
 						}
-						
+
 					}
 
 				}
@@ -99,7 +98,7 @@ public class Plainserver {
 		File[] list = file.listFiles();
 		if (list != null)
 			for (File fil : list) {
-				if (fil != null && name != null) {
+				if (fil != null) {
 					if (fil.isDirectory()) {
 						findFile(name, fil);
 					} else if (name.equalsIgnoreCase(fil.getName())) {
@@ -108,7 +107,6 @@ public class Plainserver {
 					}
 				}
 			}
-		
 		return found;
 	}
 
