@@ -16,6 +16,7 @@ public class Plainserver {
 		try {
 			while (true) {
 				try (Socket socket = listener.accept()) {
+					
 					InputStreamReader isr = new InputStreamReader(socket.getInputStream());
 					BufferedReader reader = new BufferedReader(isr);
 					String line = reader.readLine();
@@ -25,7 +26,11 @@ public class Plainserver {
 					System.out.println("===============START=============");
 					while (line != null && !line.isEmpty()) {
 						System.out.println(line);
-
+						
+						for(int i = 0 ; i < 10000 ; i++ ){
+							
+						}
+						
 						String[] dic = line.split(" ");
 						for (String a : dic) {
 							if (sd == 1) {

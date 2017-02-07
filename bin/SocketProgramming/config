@@ -1,2 +1,3 @@
-Number_Of_Clients = 10
+Number_Of_Clients = 100
 Default_HTML_File = /Users/puevigreven/Desktop/NetworkLab/ComputerNetworkLab/src/SocketProgramming/defaultHTML.html 
+ip_address=

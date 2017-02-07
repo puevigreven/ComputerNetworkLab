@@ -19,7 +19,7 @@ public class MultithreadingServer {
 		this.socket = socket;
 	}
 
-	void run() throws IOException {
+	Runnable run() throws IOException {
 
 		System.out.println("hello from the server");
 		try {
@@ -62,11 +62,20 @@ public class MultithreadingServer {
 				}
 				directory = "/Users/puevigreven/Desktop/NetworkLab/ComputerNetworkLab/src/SocketProgramming/";
 				System.out.println("file name is: " + fileName);
+				
+				if(fileName == null){
+					String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + "Hello this is home";
+					socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
+					return null;
+				}
+
 				int found = findFile(fileName, new File(directory));
 				if (found == 0) {
+					log("file not found");
 					String httpResponse_fileNotFound = "HTTP/1.1 200 OK\r\n\r\n" + "404 File Not found";
 					socket.getOutputStream().write(httpResponse_fileNotFound.getBytes("UTF-8"));
 				} else {
+					log("file found");
 					String path = "/Users/puevigreven/Desktop/NetworkLab/ComputerNetworkLab/src/SocketProgramming/"
 							+ fileName;
 
@@ -79,9 +88,11 @@ public class MultithreadingServer {
 			}
 		} finally
 
-		{
+		{	
+			socket.close();
 			log("Closing");
 		}
+		return null;
 	}
 
 	static void readConfigFile() throws IOException {
