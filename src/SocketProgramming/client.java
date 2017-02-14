@@ -20,14 +20,11 @@ public class client {
      * it serves.
      */
     public static void main(String[] args) throws IOException {
-        String serverAddress = JOptionPane.showInputDialog(
-            "Enter IP Address of a machine that is\n" +
-            "running the date service on port 9090:");
-        Socket s = new Socket(serverAddress, 9091);
-        BufferedReader input =
-            new BufferedReader(new InputStreamReader(s.getInputStream()));
-        String answer = input.readLine();
-        JOptionPane.showMessageDialog(null, answer);
-        System.exit(0);
+        //String serverAddress = JOptionPane.showInputDialog("Enter the command in format\n" + "cp path_to_local file path_to_remote_directory:");
+        Socket s = new Socket("172.16.27.46", 9091);
+        String httpResponse = "cp /Users/puevigreven/Desktop/main.c /Users/puevigreven/Desktop/Midsem/ ";
+		s.getOutputStream().write(httpResponse.getBytes("UTF-8"));
+       // JOptionPane.showMessageDialog(null, answer);
+       // System.exit(0);
     }
 }

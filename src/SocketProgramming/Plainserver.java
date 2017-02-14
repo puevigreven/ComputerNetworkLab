@@ -20,7 +20,7 @@ public class Plainserver {
 					InputStreamReader isr = new InputStreamReader(socket.getInputStream());
 					BufferedReader reader = new BufferedReader(isr);
 					String line = reader.readLine();
-					
+					System.out.println("input: "+line);
 					String url = null;
 					int sd = 0;
 					System.out.println("===============START=============");

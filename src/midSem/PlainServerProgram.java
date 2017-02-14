@@ -1,4 +1,4 @@
-package SocketProgramming;
+package midSem;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -8,7 +8,7 @@ public class PlainServerProgram {
 	static int Number_Of_Clients = 0;
 	static String defaultpath = null;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		 Plainserver p = new Plainserver();
 		 p.run();
 		}
