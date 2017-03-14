@@ -50,7 +50,7 @@ public class serverChatform extends JFrame implements ActionListener {
 		this.setTitle("Server");
 		Send.addActionListener(this);
 		System.out.println(InetAddress.getLocalHost());
-		InetAddress addr = InetAddress.getByName("172.16.27.46");
+		InetAddress addr = InetAddress.getByName("172.16.27.224");
 
 		server = new ServerSocket(2000, 1,addr);
 		ChatHistory.setText("Waiting for Client");

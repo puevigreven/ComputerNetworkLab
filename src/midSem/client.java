@@ -24,9 +24,14 @@ public class client {
 		// String serverAddress = JOptionPane.showInputDialog("Enter the command
 		// in format\n" + "cp path_to_local file path_to_remote_directory:");
 		Socket s = new Socket("172.16.27.46", 9092);
-		String httpResponse = "cp /Users/puevigreven/Desktop/main1.c /Users/puevigreven/Desktop/Midsem/ ";
+		String httpResponse = "cp /Users/puevigreven/Desktop/main.c /Users/puevigreven/Desktop/Midsem/ ";
 		s.getOutputStream().write(httpResponse.getBytes("UTF-8"));
 		log("done");
+		
+		InputStreamReader isr = new InputStreamReader(s.getInputStream());
+		BufferedReader reader = new BufferedReader(isr);
+		String line = reader.readLine();
+		System.out.println("input: " + line);
 
 	}
 

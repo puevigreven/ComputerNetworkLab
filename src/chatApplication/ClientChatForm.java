@@ -48,7 +48,7 @@ public class ClientChatForm extends JFrame implements ActionListener {
 		Send.setBounds(375, 400, 95, 30);
 		panel.add(Send);
 		Send.addActionListener(this);
-		InetAddress addr = InetAddress.getByName("172.16.27.46");
+		InetAddress addr = InetAddress.getByName("172.16.27.224");
 		System.out.println(addr);
 
 		conn = new Socket(addr, 2000);
@@ -128,3 +128,5 @@ public class ClientChatForm extends JFrame implements ActionListener {
 		ClientChatForm chatForm = new ClientChatForm();
 	}
 }
+
+

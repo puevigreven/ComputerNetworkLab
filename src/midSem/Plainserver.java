@@ -14,8 +14,8 @@ public class Plainserver {
 
 	void run() throws IOException, InterruptedException {
 		String httpResponse;
-		System.out.println("hello from the server");
 		ServerSocket listener = new ServerSocket(PortNumber);
+		System.out.println("hello from the server");
 		try {
 			while (true) {
 				try (Socket socket = listener.accept()) {
@@ -43,10 +43,9 @@ public class Plainserver {
 					} else {
 						httpResponse = "OK";
 					}
-
 					log(httpResponse);
 					
-					socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
+					socket.getOutputStream().write(httpResponse.getBytes());
 				}
 			}
 		} finally
